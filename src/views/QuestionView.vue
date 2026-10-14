@@ -175,6 +175,10 @@ function toggle(): void {
 .question-view__title {
   font-size: $font-2xl;
   line-height: 1.4;
+
+  @include media($bp-sm) {
+    font-size: $font-xl;
+  }
 }
 
 .question-view__meta {
@@ -189,6 +193,10 @@ function toggle(): void {
   border-left: 3px solid var(--c-brand);
   border-radius: $radius-md;
   background: var(--c-bg-elevated);
+
+  @include media($bp-sm) {
+    padding: $space-md;
+  }
 }
 
 .question-view__answer-head {
@@ -197,6 +205,12 @@ function toggle(): void {
   justify-content: space-between;
   gap: $space-md;
   margin-bottom: $space-lg;
+
+  @include media($bp-sm) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $space-sm;
+  }
 }
 
 .question-view__hint {
@@ -224,6 +238,10 @@ function toggle(): void {
   border: 1px solid var(--c-border);
   border-radius: $radius-md;
   background: var(--c-bg-elevated);
+
+  @include media($bp-sm) {
+    padding: $space-md;
+  }
 }
 
 .question-view__section-title {
@@ -257,6 +275,10 @@ function toggle(): void {
   gap: $space-md;
   padding-top: $space-lg;
   border-top: 1px solid var(--c-border);
+
+  @include media($bp-sm) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .question-view__pager-item {
@@ -276,6 +298,11 @@ function toggle(): void {
 
 .question-view__pager-item--next {
   text-align: right;
+
+  // 单列时右对齐会显得突兀，改回左对齐
+  @include media($bp-sm) {
+    text-align: left;
+  }
 }
 
 .question-view__pager-label {

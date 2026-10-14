@@ -19,6 +19,12 @@ const md = new MarkdownIt({
   typographer: false,
 })
 
+// 给表格套一层滚动容器：窄屏下宽表格可在自身区域内左右滑动，不会撑破整页。
+md.renderer.rules.table_open = (tokens, idx, options, _env, self) =>
+  `<div class="md-table">${self.renderToken(tokens, idx, options)}`
+md.renderer.rules.table_close = (tokens, idx, options, _env, self) =>
+  `${self.renderToken(tokens, idx, options)}</div>`
+
 /** 正文渲染缓存：同一段正文只渲染一次 */
 const blockCache = new Map<string, MdBlock[]>()
 

@@ -151,6 +151,10 @@ function openResult(hit: SearchHit): void {
   @include media($bp-md) {
     padding: 0 $space-lg;
   }
+
+  @include media($bp-sm) {
+    gap: $space-sm;
+  }
 }
 
 .app-header__brand {
@@ -182,6 +186,11 @@ function openResult(hit: SearchHit): void {
   display: flex;
   flex-direction: column;
   line-height: 1.25;
+
+  // 极窄屏只保留 logo，把宽度让给搜索框
+  @include media($bp-sm) {
+    display: none;
+  }
 }
 
 .app-header__title {
@@ -218,6 +227,15 @@ function openResult(hit: SearchHit): void {
   overflow-y: auto;
   background: var(--c-bg-elevated);
   box-shadow: var(--c-shadow);
+
+  // 窄屏：面板改为贴住 header 下沿、横跨整屏，避免只有搜索框那么窄
+  @include media($bp-md) {
+    position: fixed;
+    top: calc(#{$header-height} + 1px);
+    right: $space-md;
+    left: $space-md;
+    max-height: 70vh;
+  }
 }
 
 .app-header__empty {
@@ -275,6 +293,13 @@ function openResult(hit: SearchHit): void {
   height: 32px;
   border-radius: $radius-sm;
   color: var(--c-text-muted);
+
+  // 触屏上放大到 40px，便于点按
+  @include media($bp-md) {
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+  }
 
   &:hover {
     color: var(--c-text);

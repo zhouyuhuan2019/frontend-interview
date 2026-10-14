@@ -94,8 +94,8 @@ onKeyStroke('Escape', () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: 36px;
+  height: 36px;
   border-radius: $radius-sm;
   color: var(--c-text-muted);
 
@@ -105,8 +105,8 @@ onKeyStroke('Escape', () => {
   }
 
   svg {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
   }
 }
 

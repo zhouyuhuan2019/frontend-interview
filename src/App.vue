@@ -60,6 +60,10 @@ void ensureHighlighter()
     gap: 0;
     padding: 0 $space-lg;
   }
+
+  @include media($bp-sm) {
+    padding: 0 $space-md;
+  }
 }
 
 .app__sidebar {
@@ -81,5 +85,9 @@ void ensureHighlighter()
   min-width: 0;
   max-width: $content-max-width;
   padding: $space-xl 0 $space-3xl;
+
+  @include media($bp-sm) {
+    padding: $space-lg 0 $space-2xl;
+  }
 }
 </style>

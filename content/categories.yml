@@ -61,6 +61,12 @@
     - 插槽
     - 虚拟 DOM 与 diff
     - Vuex 与路由
+    - 表单与交互
+    - 请求与拦截
+    - 缓存与 keep-alive
+    - 样式与 scoped
+    - 错误处理
+    - 性能优化
 
 - id: vue3
   title: Vue 3
@@ -76,6 +82,10 @@
     - 内置组件与新特性
     - 编译优化
     - Pinia
+    - 组合式函数复用
+    - 模板 ref 与 DOM
+    - 样式与 scoped
+    - 性能优化
 
 - id: react
   title: React
@@ -86,8 +96,14 @@
     - props 与 state
     - Hooks 基础
     - 闭包陷阱与 useRef
+    - 副作用与清理
+    - 状态管理与更新
+    - 自定义 Hook
     - 性能优化
     - Fiber 与调和
+    - 错误处理
+    - 路由与懒加载
+    - 表单与列表
     - 与 Vue 的对比
 
 - id: engineering

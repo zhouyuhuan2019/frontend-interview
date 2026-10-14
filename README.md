@@ -165,4 +165,4 @@ const a = 1
 - `searchDebounceMs`：搜索输入去抖时间。
 - `DIFFICULTY_LABEL` / `FREQUENCY_LABEL`：难度与频率的展示文案。
 
-界面为单一浅色主题，不再提供深浅色切换。
+界面提供**亮 / 暗主题切换**，首次进入跟随系统偏好；点击右上角按钮手动切换后，会用 localStorage（键 `fi-theme`）记住你的选择。

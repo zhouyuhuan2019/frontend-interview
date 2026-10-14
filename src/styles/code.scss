@@ -1,6 +1,7 @@
 // =============================================================================
-// 代码高亮：Shiki 单浅色主题
-// Shiki 直接输出内联颜色（github-light），这里只保留必要的布局样式。
+// 代码高亮：Shiki 双主题
+// Shiki 以 defaultColor: false 输出 --shiki-light / --shiki-dark 变量，
+// 这里负责把它们映射成实际颜色，并随 html.dark 切换。
 // =============================================================================
 
 .shiki {
@@ -8,5 +9,21 @@
     display: block;
     width: max-content;
     min-width: 100%;
+  }
+
+  // 亮色主题取用 --shiki-light 系列变量
+  &,
+  span {
+    color: var(--shiki-light);
+    background-color: var(--shiki-light-bg);
+  }
+}
+
+html.dark .shiki {
+  // 暗色主题改取 --shiki-dark 系列变量
+  &,
+  span {
+    color: var(--shiki-dark);
+    background-color: var(--shiki-dark-bg);
   }
 }

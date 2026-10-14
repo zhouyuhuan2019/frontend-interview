@@ -86,8 +86,8 @@ watch(isActive, (active) => {
 
 .sidebar-group__title {
   flex: 1;
-  font-size: $font-sm;
-  font-weight: 600;
+  font-size: $font-lg;
+  font-weight: 700;
   @include ellipsis;
 }
 
@@ -132,7 +132,8 @@ watch(isActive, (active) => {
 .sidebar-group__link {
   padding: $space-xs $space-sm $space-xs $space-lg;
   border-left: 2px solid transparent;
-  font-size: $font-sm;
+  font-size: $font-md;
+  font-weight: 600;
   line-height: 1.5;
   color: var(--c-text-muted);
 

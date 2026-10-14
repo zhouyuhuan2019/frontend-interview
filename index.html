@@ -6,6 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="前端面试题库：问题、参考答案与原理讲解" />
     <title>前端面试题库</title>
+    <script>
+      // 首屏防闪白：在渲染前应用已保存/系统的主题（与 useTheme.ts 共用同一 key）
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('fi-theme')
+          var dark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches
+          if (dark) document.documentElement.classList.add('dark')
+        } catch (error) {
+          /* 读取失败时保持默认亮色 */
+        }
+      })()
+    </script>
   </head>
   <body>
     <div id="app"></div>

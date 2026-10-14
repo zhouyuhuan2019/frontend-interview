@@ -8,10 +8,12 @@ import { APP } from '@/config/app'
 import { useContent } from '@/composables/useContent'
 import { searchQuestions } from '@/composables/useSearch'
 import { useSidebar } from '@/composables/useSidebar'
+import { useTheme } from '@/composables/useTheme'
 import type { SearchHit } from '@/content/types'
 
 const router = useRouter()
 const { isMobile, toggleDrawer } = useSidebar()
+const { isDark, toggle: toggleTheme } = useTheme()
 const { categoryOf, questions } = useContent()
 
 const keyword = ref('')
@@ -90,6 +92,34 @@ function openResult(hit: SearchHit): void {
           </button>
         </div>
       </div>
+
+      <button
+        class="app-header__icon-button"
+        type="button"
+        :aria-label="isDark ? '切换到亮色主题' : '切换到暗色主题'"
+        :title="isDark ? '切换到亮色主题' : '切换到暗色主题'"
+        @click="toggleTheme"
+      >
+        <svg v-if="isDark" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+          <path
+            d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+        <svg v-else viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
     </div>
   </header>
 </template>
@@ -142,7 +172,7 @@ function openResult(hit: SearchHit): void {
   height: 28px;
   border-radius: $radius-sm;
   background: var(--c-brand);
-  color: #fff;
+  color: var(--c-on-brand);
   font-size: $font-xs;
   font-weight: 700;
   letter-spacing: 0.04em;

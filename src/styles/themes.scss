@@ -1,48 +1,95 @@
 // =============================================================================
-// 运行期颜色变量（单一浅色主题）
-// 全站仅一套浅色配色：白底 + 中性灰阶 + 蓝色强调色，不做深浅主题切换。
-// 代码高亮的颜色由 Shiki 直接输出内联样式（见 code.scss）。
+// 运行期颜色变量（亮 / 暗双主题 · 暖色系 + 墨绿）
+// 亮色：暖米白底 + 偏暖灰阶文字 + 低饱和墨绿强调色（:root）。
+// 暗色：暖调深底 + 暖白文字 + 提亮的青绿强调色（html.dark）。
+// 代码高亮的颜色由 Shiki 输出 --shiki-light / --shiki-dark 变量，见 code.scss。
 // =============================================================================
 
 :root {
-  // ---- 品牌色 ----
-  --c-brand: #2563eb;
-  --c-brand-strong: #1d4ed8;
-  --c-brand-soft: #eff4ff;
+  // ---- 品牌色（墨绿 / 青） ----
+  --c-brand: #0f766e;
+  --c-brand-strong: #0c5f58;
+  --c-brand-soft: #e6f2f0;
+  // 品牌色底上的文字色（亮色下为白，暗色下为深色）
+  --c-on-brand: #ffffff;
 
-  // ---- 背景 ----
-  --c-bg: #ffffff;
-  --c-bg-elevated: #ffffff;
-  --c-bg-sunken: #f6f7f9;
+  // ---- 背景（暖米白） ----
+  --c-bg: #faf9f7;
+  --c-bg-elevated: #fffefb;
+  --c-bg-sunken: #f3f1ed;
   --c-bg-code: #ffffff;
 
-  // ---- 文字 ----
-  --c-text: #1a1d23;
-  --c-text-muted: #5a616e;
-  --c-text-subtle: #9098a3;
+  // ---- 文字（暖灰阶） ----
+  --c-text: #2d2a26;
+  --c-text-muted: #6b655d;
+  --c-text-subtle: #9a938a;
 
-  // ---- 边框 ----
-  --c-border: #e9ebef;
-  --c-border-strong: #d3d7de;
+  // ---- 边框（偏暖） ----
+  --c-border: #ebe7e1;
+  --c-border-strong: #d8d2c9;
 
   // ---- 语义色 ----
-  --c-success: #15803d;
+  --c-success: #1f7a58;
   --c-warning: #b45309;
-  --c-danger: #dc2626;
-  --c-info: #2563eb;
+  --c-danger: #c0392b;
+  --c-info: #0f766e;
 
   // ---- 难度徽标：文字色 + 淡底色 ----
-  --c-junior: #15803d;
-  --c-junior-soft: #eef7f1;
+  --c-junior: #1f7a58;
+  --c-junior-soft: #edf6f1;
   --c-middle: #b45309;
-  --c-middle-soft: #fdf4e7;
-  --c-senior: #dc2626;
-  --c-senior-soft: #fdeeef;
+  --c-middle-soft: #fbf3e6;
+  --c-senior: #c0392b;
+  --c-senior-soft: #fbecea;
 
   // ---- 交互 ----
-  --c-hover: rgba(37, 99, 235, 0.05);
-  --c-focus-ring: rgba(37, 99, 235, 0.3);
-  --c-shadow: 0 2px 8px rgba(17, 24, 39, 0.06);
+  --c-hover: rgba(15, 118, 110, 0.06);
+  --c-focus-ring: rgba(15, 118, 110, 0.28);
+  --c-shadow: 0 2px 8px rgba(60, 50, 40, 0.06);
 
   color-scheme: light;
+}
+
+html.dark {
+  // ---- 品牌色：深底上压低亮度/饱和度的青绿，避免刺眼 ----
+  --c-brand: #4b9c92;
+  --c-brand-strong: #68b3a8;
+  --c-brand-soft: rgba(75, 156, 146, 0.16);
+  --c-on-brand: #0b1f1c;
+
+  // ---- 背景（暖调深色，非纯黑，减少眩光） ----
+  --c-bg: #1b1917;
+  --c-bg-elevated: #24211e;
+  --c-bg-sunken: #161412;
+  --c-bg-code: #131110;
+
+  // ---- 文字（暖白灰阶） ----
+  --c-text: #e9e4dc;
+  --c-text-muted: #a89f94;
+  --c-text-subtle: #776e63;
+
+  // ---- 边框 ----
+  --c-border: #322d28;
+  --c-border-strong: #453e37;
+
+  // ---- 语义色 ----
+  --c-success: #5cb98d;
+  --c-warning: #fbbf24;
+  --c-danger: #f87171;
+  --c-info: #4b9c92;
+
+  // ---- 难度徽标：亮文字 + 半透明底色 ----
+  --c-junior: #5cb98d;
+  --c-junior-soft: rgba(92, 185, 141, 0.16);
+  --c-middle: #fbbf24;
+  --c-middle-soft: rgba(251, 191, 36, 0.15);
+  --c-senior: #f87171;
+  --c-senior-soft: rgba(248, 113, 113, 0.15);
+
+  // ---- 交互 ----
+  --c-hover: rgba(75, 156, 146, 0.1);
+  --c-focus-ring: rgba(75, 156, 146, 0.34);
+  --c-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+
+  color-scheme: dark;
 }

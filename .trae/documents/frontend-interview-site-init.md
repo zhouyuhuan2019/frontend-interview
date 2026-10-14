@@ -5,7 +5,7 @@
 `/Users/zhouyuhuan/workspace/xy/frontend-interview` 目前是**空目录**。目标是初始化一个纯前端的「前端面试题库」教学站点：每道题包含**问题、参考答案、原理讲解**，覆盖 JS 基础 / HTML·CSS / 浏览器与网络(HTTP) / Vue2 / Vue3 / React / 工程化与性能 / 手写代码题 等市面主流考点。
 
 核心诉求有两点：
-1. **好用的教学展示**：分类导航 + 关键词搜索、代码高亮、折叠展开式答案（默认只露问题，点击展开答案与讲解）、部分 JS 题可在页面内直接编辑运行看结果、暗色主题、移动端适配。
+1. **好用的教学展示**：分类导航 + 关键词搜索、代码高亮、折叠展开式答案（默认只露问题，点击展开答案与讲解）、部分 JS 题可在页面内直接编辑运行看结果、亮/暗主题切换（默认跟随系统）、移动端适配。
 2. **可持续手动维护**：题目内容以「一题一个 Markdown 文件 + YAML frontmatter」的形式存在，**新增/修改题目只改内容文件，不改任何代码**。
 
 已与用户确认的技术选型：Vue3 + Vite + TypeScript。
@@ -21,11 +21,11 @@
 | 内容源 | `content/**/*.md`（一题一文件）+ `content/categories.yml`（分类元数据） |
 | 内容加载 | `import.meta.glob('/content/**/*.md', { query: '?raw', import: 'default', eager: true })`，自研 frontmatter 解析（`yaml` 包，正则切头部 `---` 块），**启动只解析元信息，正文延迟到展开答案时才渲染** |
 | Markdown 渲染 | `markdown-it` → 按顶层 token 切「块」；代码块交给 Vue 组件（不是整段 `v-html`） |
-| 代码高亮 | `shiki`（`createHighlighterCore` + JS 正则引擎），单一浅色主题 `github-light`，直接输出内联颜色；语言包用动态 import 自动分包 |
+| 代码高亮 | `shiki`（`createHighlighterCore` + JS 正则引擎），双主题 `github-light` / `github-dark`，`defaultColor: false` 输出 `--shiki-light` / `--shiki-dark` 变量，由 `code.scss` 随 `html.dark` 切换；语言包用动态 import 自动分包 |
 | 运行 JS 示例 | Web Worker（`worker.terminate()` 硬中断超时/死循环），worker 内代理 `console` + `postMessage` 回传输出；**不在主线程 eval**，运行结果一律文本插值渲染（禁止 `v-html`） |
 | 搜索 | `minisearch` 7.x，中文用 CJK bigram 分词（不依赖 `Intl.Segmenter`），索引 title / tags / 分类 / 正文 |
 | 状态管理 | 不引 Pinia。`useContent` / `useSearch` 等为**模块级单例 composable**，符合「数据驱动、少冗余」偏好 |
-| 主题 | 单一浅色主题，不做深浅色切换（无 `useTheme`、无首屏防闪白脚本） |
+| 主题 | 亮 / 暗双主题，默认跟随系统偏好；右上角按钮手动切换，选择写入 localStorage（键 `fi-theme`）；`useTheme` + `index.html` 内联脚本防闪白 |
 | 移动端 | `useMediaQuery` 控制侧栏抽屉；折叠动画用 `grid-template-rows` 过渡 + `<details>` |
 | 样式 | SCSS：`tokens.scss`（编译期变量，全局注入）+ `themes.scss`（运行期 `--c-*` CSS 变量）+ `mixins.scss`；组件一律 **BEM** 命名、按模块注释分区 |
 

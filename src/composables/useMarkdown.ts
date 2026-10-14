@@ -8,7 +8,7 @@
 import MarkdownIt from 'markdown-it'
 import { isRunnableLang, normalizeLang, parseFenceInfo } from '@/content/fence'
 import type { MdBlock } from '@/content/types'
-import { CODE_THEME, getHighlighter } from './useShiki'
+import { CODE_THEMES, getHighlighter } from './useShiki'
 
 type MarkdownToken = ReturnType<InstanceType<typeof MarkdownIt>['parse']>[number]
 
@@ -91,7 +91,8 @@ export function renderMarkdownBlocks(markdown: string, cacheKey?: string): MdBlo
         isOutput: flags.has('output'),
         html: highlighter.codeToHtml(first.content, {
           lang: resolveHighlightLang(normalizeLang(lang)),
-          theme: CODE_THEME,
+          themes: CODE_THEMES,
+          defaultColor: false,
         }),
       }
     }

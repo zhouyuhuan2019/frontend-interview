@@ -47,8 +47,8 @@ const { categories, questions, questionsOf } = useContent()
 }
 
 .app-sidebar__home-title {
-  font-size: $font-sm;
-  font-weight: 600;
+  font-size: $font-lg;
+  font-weight: 700;
 }
 
 .app-sidebar__home-count {

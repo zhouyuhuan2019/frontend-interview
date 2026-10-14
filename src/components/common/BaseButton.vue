@@ -57,12 +57,12 @@ withDefaults(
 }
 
 .base-button--primary {
-  color: #fff;
+  color: var(--c-on-brand);
   border-color: transparent;
   background: var(--c-brand);
 
   &:hover:not(:disabled) {
-    color: #fff;
+    color: var(--c-on-brand);
     background: var(--c-brand-strong);
   }
 }

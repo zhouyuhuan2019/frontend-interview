@@ -8,11 +8,9 @@ import { APP } from '@/config/app'
 import { useContent } from '@/composables/useContent'
 import { searchQuestions } from '@/composables/useSearch'
 import { useSidebar } from '@/composables/useSidebar'
-import { useTheme } from '@/composables/useTheme'
 import type { SearchHit } from '@/content/types'
 
 const router = useRouter()
-const { isDark, toggleDark } = useTheme()
 const { isMobile, toggleDrawer } = useSidebar()
 const { categoryOf, questions } = useContent()
 
@@ -92,16 +90,6 @@ function openResult(hit: SearchHit): void {
           </button>
         </div>
       </div>
-
-      <button class="app-header__icon-button" type="button" :aria-label="isDark ? '切换到浅色主题' : '切换到深色主题'" @click="toggleDark()">
-        <svg v-if="isDark" viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2" />
-          <path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-        </svg>
-        <svg v-else viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M20 14.5A8.5 8.5 0 019.5 4a8.5 8.5 0 1010.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
-        </svg>
-      </button>
     </div>
   </header>
 </template>

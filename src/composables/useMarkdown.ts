@@ -1,14 +1,14 @@
 // =============================================================================
 // Markdown 渲染：把正文切成一维「块」数组
 // - 普通块 → 直接渲染成 HTML
-// - 代码块 → 交给 Vue 组件（支持复制 / 运行 / 输出对照），并预先做双主题高亮
+// - 代码块 → 交给 Vue 组件（支持复制 / 运行 / 输出对照），并预先做代码高亮
 // 调用前需保证 ensureHighlighter() 已 resolve，之后本模块全同步。
 // =============================================================================
 
 import MarkdownIt from 'markdown-it'
 import { isRunnableLang, normalizeLang, parseFenceInfo } from '@/content/fence'
 import type { MdBlock } from '@/content/types'
-import { CODE_THEMES, getHighlighter } from './useShiki'
+import { CODE_THEME, getHighlighter } from './useShiki'
 
 type MarkdownToken = ReturnType<InstanceType<typeof MarkdownIt>['parse']>[number]
 
@@ -91,9 +91,7 @@ export function renderMarkdownBlocks(markdown: string, cacheKey?: string): MdBlo
         isOutput: flags.has('output'),
         html: highlighter.codeToHtml(first.content, {
           lang: resolveHighlightLang(normalizeLang(lang)),
-          themes: CODE_THEMES,
-          // 只输出 --shiki-light / --shiki-dark 变量，实际颜色由 code.scss 决定
-          defaultColor: false,
+          theme: CODE_THEME,
         }),
       }
     }

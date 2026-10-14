@@ -21,11 +21,11 @@
 | 内容源 | `content/**/*.md`（一题一文件）+ `content/categories.yml`（分类元数据） |
 | 内容加载 | `import.meta.glob('/content/**/*.md', { query: '?raw', import: 'default', eager: true })`，自研 frontmatter 解析（`yaml` 包，正则切头部 `---` 块），**启动只解析元信息，正文延迟到展开答案时才渲染** |
 | Markdown 渲染 | `markdown-it` → 按顶层 token 切「块」；代码块交给 Vue 组件（不是整段 `v-html`） |
-| 代码高亮 | `shiki`（`createHighlighterCore` + JS 正则引擎），`defaultColor: false` 输出 `--shiki-light`/`--shiki-dark` 双主题 CSS 变量 → **切主题零重渲染**；语言包用动态 import 自动分包 |
+| 代码高亮 | `shiki`（`createHighlighterCore` + JS 正则引擎），单一浅色主题 `github-light`，直接输出内联颜色；语言包用动态 import 自动分包 |
 | 运行 JS 示例 | Web Worker（`worker.terminate()` 硬中断超时/死循环），worker 内代理 `console` + `postMessage` 回传输出；**不在主线程 eval**，运行结果一律文本插值渲染（禁止 `v-html`） |
 | 搜索 | `minisearch` 7.x，中文用 CJK bigram 分词（不依赖 `Intl.Segmenter`），索引 title / tags / 分类 / 正文 |
-| 状态管理 | 不引 Pinia。`useContent` / `useSearch` / `useTheme` 等为**模块级单例 composable**，符合「数据驱动、少冗余」偏好 |
-| 主题 | `@vueuse/core` 的 `useDark`（在 `<html>` 上加 `.dark`）+ `index.html` 内联脚本读 localStorage 防闪白 |
+| 状态管理 | 不引 Pinia。`useContent` / `useSearch` 等为**模块级单例 composable**，符合「数据驱动、少冗余」偏好 |
+| 主题 | 单一浅色主题，不做深浅色切换（无 `useTheme`、无首屏防闪白脚本） |
 | 移动端 | `useMediaQuery` 控制侧栏抽屉；折叠动画用 `grid-template-rows` 过渡 + `<details>` |
 | 样式 | SCSS：`tokens.scss`（编译期变量，全局注入）+ `themes.scss`（运行期 `--c-*` CSS 变量）+ `mixins.scss`；组件一律 **BEM** 命名、按模块注释分区 |
 
@@ -38,7 +38,7 @@
 ```
 frontend-interview/
 ├─ .nvmrc                     # 20
-├─ index.html                 # 内联脚本读 localStorage → html.dark（防闪白）
+├─ index.html                 # 应用入口
 ├─ package.json  tsconfig.json  tsconfig.app.json  tsconfig.node.json  vite.config.ts  env.d.ts
 ├─ README.md                  # 如何新增题目（面向维护者）
 ├─ content/                   # 纯内容，置于 src 外，不进 TS 编译

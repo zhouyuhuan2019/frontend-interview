@@ -85,7 +85,6 @@ function toggle(): void {
 
 .question-card--expanded {
   border-color: var(--c-brand);
-  box-shadow: var(--c-shadow);
 }
 
 .question-card__head {

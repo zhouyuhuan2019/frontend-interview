@@ -39,20 +39,20 @@ withDefaults(
 
 .base-tag--junior {
   color: var(--c-junior);
-  border-color: currentColor;
-  background: transparent;
+  border-color: transparent;
+  background: var(--c-junior-soft);
 }
 
 .base-tag--middle {
   color: var(--c-middle);
-  border-color: currentColor;
-  background: transparent;
+  border-color: transparent;
+  background: var(--c-middle-soft);
 }
 
 .base-tag--senior {
   color: var(--c-senior);
-  border-color: currentColor;
-  background: transparent;
+  border-color: transparent;
+  background: var(--c-senior-soft);
 }
 
 .base-tag--muted {

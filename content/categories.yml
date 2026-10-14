@@ -126,3 +126,17 @@
     - 请求与状态设计
     - 权限与守卫
     - 监控体系
+
+- id: ai
+  title: AI 与大模型
+  order: 55
+  desc: LLM 应用、提示工程、RAG、AI Agent 与前端集成
+  subtopics:
+    - LLM 基础概念
+    - 提示词工程
+    - RAG 与向量检索
+    - AI Agent 与工具调用
+    - MCP 协议
+    - 流式渲染与 SSE
+    - 前端 AI 集成
+    - AI 安全与护栏

@@ -1,78 +1,48 @@
 // =============================================================================
-// 运行期主题变量（亮 / 暗两套 CSS 自定义属性）
-// 主题切换只改 <html> 上的 .dark 类；代码高亮输出的是 CSS 变量（见 code.scss），
-// 因此切换主题不会触发任何重新渲染。
+// 运行期颜色变量（单一浅色主题）
+// 全站仅一套浅色配色：白底 + 中性灰阶 + 蓝色强调色，不做深浅主题切换。
+// 代码高亮的颜色由 Shiki 直接输出内联样式（见 code.scss）。
 // =============================================================================
 
 :root {
   // ---- 品牌色 ----
-  --c-brand: #3b6ef6;
-  --c-brand-strong: #2b56d4;
-  --c-brand-soft: #e8efff;
+  --c-brand: #2563eb;
+  --c-brand-strong: #1d4ed8;
+  --c-brand-soft: #eff4ff;
 
   // ---- 背景 ----
-  --c-bg: #f7f8fa;
+  --c-bg: #ffffff;
   --c-bg-elevated: #ffffff;
-  --c-bg-sunken: #eef0f4;
-  --c-bg-code: #f6f8fa;
+  --c-bg-sunken: #f6f7f9;
+  --c-bg-code: #ffffff;
 
   // ---- 文字 ----
-  --c-text: #1f2430;
-  --c-text-muted: #5b6472;
-  --c-text-subtle: #8b93a1;
+  --c-text: #1a1d23;
+  --c-text-muted: #5a616e;
+  --c-text-subtle: #9098a3;
 
   // ---- 边框 ----
-  --c-border: #e3e6ec;
-  --c-border-strong: #cdd3dd;
+  --c-border: #e9ebef;
+  --c-border-strong: #d3d7de;
 
   // ---- 语义色 ----
-  --c-success: #1f9d63;
-  --c-warning: #c9820b;
-  --c-danger: #d93843;
-  --c-info: #3b6ef6;
+  --c-success: #15803d;
+  --c-warning: #b45309;
+  --c-danger: #dc2626;
+  --c-info: #2563eb;
 
-  // ---- 难度徽标 ----
-  --c-junior: #1f9d63;
-  --c-middle: #c9820b;
-  --c-senior: #d93843;
+  // ---- 难度徽标：文字色 + 淡底色 ----
+  --c-junior: #15803d;
+  --c-junior-soft: #eef7f1;
+  --c-middle: #b45309;
+  --c-middle-soft: #fdf4e7;
+  --c-senior: #dc2626;
+  --c-senior-soft: #fdeeef;
 
   // ---- 交互 ----
-  --c-hover: rgba(59, 110, 246, 0.06);
-  --c-focus-ring: rgba(59, 110, 246, 0.35);
-  --c-shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 4px 12px rgba(16, 24, 40, 0.06);
+  --c-hover: rgba(37, 99, 235, 0.05);
+  --c-focus-ring: rgba(37, 99, 235, 0.3);
+  --c-shadow: 0 2px 8px rgba(17, 24, 39, 0.06);
 
   color-scheme: light;
-}
-
-html.dark {
-  --c-brand: #6f93ff;
-  --c-brand-strong: #8aa8ff;
-  --c-brand-soft: #1c2740;
-
-  --c-bg: #0f1319;
-  --c-bg-elevated: #161b23;
-  --c-bg-sunken: #0b0e13;
-  --c-bg-code: #141920;
-
-  --c-text: #e4e8ef;
-  --c-text-muted: #a3adbd;
-  --c-text-subtle: #717c8c;
-
-  --c-border: #242b36;
-  --c-border-strong: #333c4a;
-
-  --c-success: #4ac48d;
-  --c-warning: #e0a63c;
-  --c-danger: #f06875;
-  --c-info: #6f93ff;
-
-  --c-junior: #4ac48d;
-  --c-middle: #e0a63c;
-  --c-senior: #f06875;
-
-  --c-hover: rgba(111, 147, 255, 0.1);
-  --c-focus-ring: rgba(111, 147, 255, 0.4);
-  --c-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.28);
-
-  color-scheme: dark;
 }

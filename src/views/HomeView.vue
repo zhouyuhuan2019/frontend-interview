@@ -148,9 +148,7 @@ const highFrequency = computed(() => questions.value.filter((question) => questi
 
   &:hover {
     border-color: var(--c-brand);
-    box-shadow: var(--c-shadow);
     text-decoration: none;
-    transform: translateY(-2px);
   }
 }
 

@@ -7,11 +7,8 @@
 import { createHighlighterCore, type HighlighterCore } from 'shiki/core'
 import { createJavaScriptRegexEngine } from 'shiki/engine/javascript'
 
-/** 双主题：亮/暗各一套，渲染时输出 CSS 变量，切换主题无需重新高亮 */
-export const CODE_THEMES = {
-  light: 'github-light',
-  dark: 'github-dark',
-} as const
+/** 代码高亮主题：全站统一使用浅色主题 */
+export const CODE_THEME = 'github-light'
 
 let highlighterPromise: Promise<HighlighterCore> | null = null
 let highlighter: HighlighterCore | null = null
@@ -19,7 +16,7 @@ let highlighter: HighlighterCore | null = null
 /** 预热高亮器；可在应用启动时先行调用（不阻塞首屏） */
 export function ensureHighlighter(): Promise<HighlighterCore> {
   highlighterPromise ??= createHighlighterCore({
-    themes: [import('@shikijs/themes/github-light'), import('@shikijs/themes/github-dark')],
+    themes: [import('@shikijs/themes/github-light')],
     langs: [
       import('@shikijs/langs/javascript'),
       import('@shikijs/langs/typescript'),

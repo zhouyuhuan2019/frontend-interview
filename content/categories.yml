@@ -1,0 +1,128 @@
+# =============================================================================
+# 分类元数据
+# - id 与 content/ 下的目录名一致（不一致时以题目的 category 字段为准）
+# - order 决定侧栏顺序；subtopics 仅用于分类页的分组小标题
+# =============================================================================
+
+- id: js
+  title: JS 基础
+  order: 10
+  desc: 变量、类型、原型、闭包、事件循环
+  subtopics:
+    - 变量与作用域
+    - 类型与隐式转换
+    - this 与调用绑定
+    - 原型链与继承
+    - 闭包
+    - 事件循环与 Promise
+    - 数组与对象
+    - ES6+ 新特性
+
+- id: html-css
+  title: HTML 与 CSS
+  order: 20
+  desc: 语义化、盒模型、布局、层叠上下文
+  subtopics:
+    - 语义化与常用标签
+    - 盒模型与 BFC
+    - 定位与层叠上下文
+    - Flex
+    - Grid
+    - 响应式与移动端适配
+    - 选择器与优先级
+    - 回流与重绘
+
+- id: network
+  title: 浏览器与网络
+  order: 30
+  desc: HTTP、缓存、跨域、渲染流程、安全
+  subtopics:
+    - HTTP 方法与状态码
+    - 请求响应头
+    - 强缓存与协商缓存
+    - Cookie 与本地存储
+    - 同源策略与跨域
+    - HTTPS 与 TLS
+    - HTTP 版本演进
+    - 浏览器渲染流程
+    - 事件机制
+    - 性能指标
+    - 前端安全
+
+- id: vue2
+  title: Vue 2
+  order: 40
+  desc: 响应式原理、组件通信、虚拟 DOM
+  subtopics:
+    - 响应式原理
+    - 生命周期
+    - 模板与指令
+    - 组件通信
+    - 插槽
+    - 虚拟 DOM 与 diff
+    - Vuex 与路由
+
+- id: vue3
+  title: Vue 3
+  order: 50
+  desc: Composition API、Proxy 响应式、编译优化
+  subtopics:
+    - Composition API
+    - 响应式原理
+    - ref 与 reactive
+    - computed 与 watch
+    - 生命周期对照
+    - 组件通信
+    - 内置组件与新特性
+    - 编译优化
+    - Pinia
+
+- id: react
+  title: React
+  order: 60
+  desc: Hooks、状态管理、渲染与调和
+  subtopics:
+    - JSX 与组件
+    - props 与 state
+    - Hooks 基础
+    - 闭包陷阱与 useRef
+    - 性能优化
+    - Fiber 与调和
+    - 与 Vue 的对比
+
+- id: engineering
+  title: 工程化与性能
+  order: 70
+  desc: 构建工具、模块化、性能优化、监控
+  subtopics:
+    - 构建工具与 HMR
+    - 分包与 Tree-shaking
+    - 模块化规范
+    - TypeScript
+    - 包管理与版本
+    - 性能优化
+    - 监控与埋点
+    - 部署与 CDN
+
+- id: handwriting
+  title: 手写代码题
+  order: 80
+  desc: 手写 Promise、防抖节流、深拷贝等
+  subtopics:
+    - 手写 Promise
+    - 函数工具
+    - 数组与对象
+    - 事件与调度
+    - 常见算法
+
+- id: design
+  title: 场景与设计题
+  order: 90
+  desc: 架构设计、组件设计、疑难场景
+  subtopics:
+    - 架构与目录设计
+    - 组件库设计
+    - 大数据量渲染
+    - 请求与状态设计
+    - 权限与守卫
+    - 监控体系

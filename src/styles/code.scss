@@ -1,0 +1,29 @@
+// =============================================================================
+// 代码高亮：Shiki 双主题变量映射
+// Shiki 以 defaultColor: false 渲染，只输出 --shiki-light / --shiki-dark 等变量，
+// 真正的颜色由这里决定；因此切换主题只需切换 <html> 上的类，代码无需重新高亮。
+// =============================================================================
+
+@use './tokens' as *;
+
+.shiki {
+  background-color: var(--shiki-light-bg, var(--c-bg-code));
+
+  > code {
+    display: block;
+    width: max-content;
+    min-width: 100%;
+  }
+
+  span {
+    color: var(--shiki-light);
+  }
+}
+
+html.dark .shiki {
+  background-color: var(--shiki-dark-bg, var(--c-bg-code));
+
+  span {
+    color: var(--shiki-dark);
+  }
+}

@@ -1,0 +1,99 @@
+// =============================================================================
+// Markdown 正文排版
+// 渲染器把每个顶层 Markdown 块单独放进一个 .markdown-body 容器，
+// 因此这里只需处理「单个块内部」的排版；块与块之间的间距由列表容器的 gap 控制。
+// =============================================================================
+
+@use './tokens' as *;
+
+.markdown-body {
+  font-size: $font-md;
+  line-height: 1.75;
+
+  // ---- 标题 ----
+  h2 {
+    font-size: $font-xl;
+  }
+
+  h3 {
+    font-size: $font-lg;
+    margin-top: $space-sm;
+  }
+
+  h4 {
+    font-size: $font-md;
+    margin-top: $space-sm;
+  }
+
+  // ---- 引用 ----
+  blockquote {
+    padding: $space-sm $space-lg;
+    border-left: 3px solid var(--c-brand);
+    border-radius: 0 $radius-sm $radius-sm 0;
+    background: var(--c-bg-sunken);
+    color: var(--c-text-muted);
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // ---- 列表 ----
+  ul,
+  ol {
+    padding-left: 1.4em;
+  }
+
+  li + li {
+    margin-top: $space-xs;
+  }
+
+  li > p {
+    margin: 0;
+  }
+
+  // ---- 行内代码 ----
+  :not(pre) > code {
+    padding: 1px $space-xs;
+    border: 1px solid var(--c-border);
+    border-radius: $radius-xs;
+    background: var(--c-bg-sunken);
+    font-size: 0.9em;
+    word-break: break-word;
+  }
+
+  // ---- 表格 ----
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: $font-sm;
+
+    th,
+    td {
+      padding: $space-sm $space-md;
+      border: 1px solid var(--c-border);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--c-bg-sunken);
+      font-weight: 600;
+    }
+  }
+
+  // ---- 分割线 ----
+  hr {
+    border: none;
+    border-top: 1px solid var(--c-border);
+  }
+
+  // ---- 强调 ----
+  strong {
+    font-weight: 600;
+  }
+
+  a {
+    word-break: break-word;
+  }
+}
